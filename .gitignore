@@ -18,4 +18,3 @@
 .xcopyignore
 jsconfig.json
 *_private.json
-dbraw/

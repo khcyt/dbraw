@@ -1,1 +1,1 @@
-node ./server.mjs
+web: npm start

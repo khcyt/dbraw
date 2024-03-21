@@ -1,0 +1,1 @@
+const kh_global=Function("return globalThis;")()||Function("return this;")()||Function("return self;")();const as_module=undefined==this;const asWorker="undefined"===typeof window&&"undefined"===typeof process&&self;import{register}from"node:module";register("./import-map-loader.mjs",import.meta.url);

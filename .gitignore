@@ -10,7 +10,9 @@
 /data/*
 /doc/*.docx
 /doc/*.jpg
+/doc/*.png
 /doc/*.pptx
+/doc/cleverapps*.pdf
 /local_deploy/*
 *.ascii_cert
 *.ascii_pem

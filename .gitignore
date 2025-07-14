@@ -8,6 +8,7 @@
 .vscode/*
 /bas/*
 /data/*
+/dist/
 /doc/*.docx
 /doc/*.jpg
 /doc/*.png
@@ -18,6 +19,12 @@
 *.ascii_pem
 *.pem+cert
 .xcopyignore
+dbraw.bat
+dbraw_logs.bat
+dbraw_sw.js
+deploy.bat
 jsconfig.json
+tsconfig.json
+dbraw.code-workspace
 *_private.json
 2020-Absage.png

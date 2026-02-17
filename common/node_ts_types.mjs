@@ -1,1 +1,1 @@
-export{};
+export var SROptionsMap;(function(SROptionsMap){})(SROptionsMap||(SROptionsMap={}));

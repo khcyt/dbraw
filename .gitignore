@@ -14,6 +14,7 @@
 /doc/*.png
 /doc/*.pptx
 /doc/cleverapps*.pdf
+/doc/prompt.txt
 /local_deploy/*
 *.ascii_cert
 *.ascii_pem

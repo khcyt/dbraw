@@ -1,0 +1,283 @@
+"Vor dem posten in den JSONBIN-Speicher ist 20YY durch das jeweilige Jahr zu ersetzen. In event-date ist jeweils das konkrete Datum zu setzen."
+{
+    "comment" : "Vermeide single- und double-quote; Verwende stattdessen ´ und ʺ ",
+    "event-file-20YY"   : {
+        "events" : {
+            "paramz"        : {
+                "comment"                       : "Parameter für alle Events. Diese können bei Bedarf im Event überschrieben werden",
+				"comment_time-cost-change"		: "Zeitbedarf zwischen zwei Starts mit bzw. ohne Wechsel der Bootsklasse 10/20 und bei Wechsel des Final-Status im play off Modus (Achtel-, Viertel...)",
+                "time-cost-change"              : "08:00",
+                "time-cost-without-change"      : "12:00",
+                "time-cost-ckpo-kos-change"     : "20:00",
+                "comment_min-per-cat"           : "Minimale Anzahl an Teams in einer Kategorie für eigene Kategorie in den Vorläufen",
+                "min-per-cat"                   : 2,
+                "comment_n_forerun"             : "Anzahl der Vorläufe die von jedem Team zu absolvieren sind",
+                "n_forerun"                     : 2,
+                "n_boats_per_race"              : 2,
+                "comment1"                      : "Im konkreten Wettkampf bei Bedarf auf 3 erhöhen, wird eventuell für das Finale berücksichtigt.",
+                "max_boats_per_race"            : 3,
+                "comment_n_boats"               : "Anzahl der zur Verfügung stehenden Boote je Bootsklasse [ 10´er, 20´er, ... ]",
+                "n_boats"                       : [ 2, 2 ],
+                "comment_mco"                   : "Priorität beim Zusammenlegen von Kategorien in den Finalläufen bei ungeradem Starterfeld",
+                "comment_mco_2"                 : "f0 -> Übereinstimmung Ligaklasse          f -> Übereinstimmung Bootsklasse",
+                "comment_mco_3"                 : "0  -> Zuschauerboot                      -1 -> zusätzliches Boot (max_boats_per_race beachten)",
+                "comment_mco_4"                 : "ff -> David vs. Goliath                  -2 -> Letztes Einhorn (Team fährt allein)",
+                "merged-cat-order"              : [ "f0", "f", "0" ],
+                "comment_dro"                   : "Verfahrensweise, wenn mehr als ein Endlauf für bestimmte Platzierungen ausgeführt wird",
+                "comment_dro_2"                 : "drive_noop       -> Es wird kein zweiter Endlauf in den Platzierungen 1/2-3/4 durchgeführt",
+                "comment_dro_3"                 : "drive_thru       -> ohne Pause sofort in den zweiten Lauf (Teams bleiben im Boot)",
+                "comment_dro_4"                 : "drive_wait_level -> die (ersten) Endläufe der gleichen Platzierungs-Ebene abwarten",
+                "comment_dro_5"                 : "drive_wait_full  -> die (ersten) Endläufe aller Platzierungs-Ebene abwarten",
+                "comment_dro_6"                 : "drive_lenient    -> die ersten doppelten Endläufe werden vor allen weiteren Platzierungsläufen durchgeführt um den Teams mehr Verschnaufpause zu geben",
+                "double-race-order"             : "drive_noop",
+                "track-add-keys"                : [ "left", "right", "third" ],
+                "comment_forerun_adjust"        : "Wie sollen die Starterfelder im Vorlauf bei ungeradem Starterfeld aufgefüllt werden",
+                "comment_forerun_adjust_2"      : "fra_next_forerun -> Auffüllen durch Vorziehen eines Teams aus dem nächsten Vorlauf",
+                "comment_forerun_adjust_3"      : "fra_other_cat    -> Auffüllen durch Team aus anderer Kategorie",
+                "comment_forerun_adjust_4"      : "Das Regelwerk ist sehr komplex und bei adjustStartList() nachzulesen.",
+                "forerun_adjust"                : "fra_next_forerun",
+				"comment_limit_narrow_start"	: "Mindestabstand an Läufen zwischen zwei Starts eines Teams, um nicht als problematisch (😰) gekennzeichnet zu werden",
+				"limit_narrow_start"			: 3,
+				"comment_competition-kind"		: "Wettkampfmodus",
+				"comment_eck_best_of"           : "eck_best_of -> Platzsystem, Standard und gültig für Schülercup, Große DBR (Alternativname Ligamodus)", 
+				"comment_eck_play_off"          : "eck_play_off -> kombiniertes Platz und KO System für Nachtregatta (Alternativname Turniermodus)",
+				"competition-kind"				: "eck_best_of",
+				"comment_ckpo_status"			: "Aktueller Status, in dem sich der play-off Wetkkampf befindet (ckpo - competition kind play off)",
+				"comment_eckpos_gs"				: "eckpos_gs -> Gruppenphase / groupstage vor dem Beginn der KO-Runde",
+				"comment_eckpos_ro16"			: "eckpos_ro16 -> Achtelfinale / round of 16",
+				"comment_eckpos_qf"				: "eckpos_qf -> Viertelfinale / quarter-finals",
+				"comment_eckpos_sf"				: "eckpos_sf -> Halbfinale / semi-finals",
+				"comment_eckpos_f"				: "eckpos_f -> Finale / finals",
+				"ckpo_status"					: "eckpos_nop",
+				"comment_ckpo_status_start_fr"	: "Legt den Start-Status für die Finalrunde fest, daraus ergibt sich die Anzahl der Teams",
+				"ckpo_status_start_fr"			: "eckpos_nop"
+            },
+            "0"     : {
+                "event--name"                : "Cottbuser Drachenbootregatta (nur zur Orientierung)",
+                "event-date"                : "20YY-06-27",
+				"comment_timezone"          : "Zeitzone der Veranstaltung, +2 ist korekkt, wegen Sommerzeit",
+                "timezone"                  : "GMT+0200",
+                "categories"                : {
+                    "comment"                   : "der Einfacheit halber bekommen die Einträge in der Bootsklasse die Flags 0x01,0x02,0x04,0x08",
+                    "comment1"                  : "und in der Ligaklasse 0x10,0x20,0x40,0x80...",
+                    "comment2"                  : "Fällt eine Boots- oder Ligaklasse nachträglich weg, dann die Zeichenkette hier so lassen, damit sich die Masken in holded_competition und",
+                    "comment3"                  : "teams[] nicht ändern!!. Aus holded_competition, können jederzeit Werte entfernt werden, wenn Wettkampf-Kategorien entfallen.",
+                    "boat"                      : [ "10´er", "20´er" ],
+                    "league"                    : [ "Firmen-Cup", "Sport-Cup", "Damen-Cup" ],
+                    "holded-competition"        : [ "11", "12", "41" ],
+                    "aliases"                   : [ { "11" : "Pokal der Sparkasse Spree-Neiße" }, { "12" : "Pokal des OB´s der Stadt Cottbus" }, { "21" : "Pokal der Fa. Hellmann Tiefbau GmbH" },
+                                                    { "22" : "Pokal des Stadtsportbundes" },      { "41" : "Pokal Mrs.Sporty" } ]
+                },
+                "paramz"            : {
+                    "time-cost-change"              : "08:00",
+                    "time-cost-without-change"      : "12:00",
+                    "min-per-cat"                   : 4,
+                    "merged-cat-order"              : [ "f", "f0", "0", "ff" ],
+                    "double-race-order"             : "drive_lenient"
+                },
+                "comment00"                 : "Der key entspricht dem Postfix der Timetable-String",
+                "comment01"                 : "Ab Beginn AfterShow-Party werden die Finalergebnisse an Reader übertragen. Deshalb ist dieser Zeitpunkt evtl. während des Wettkampfes anzupassen",
+                "timetable"                 : [ 
+                                                {   "key": "1", "start": "08:15",   "end": "08:45"},            
+                                                {   "key": "2", "start": "09:00",   "end": "11:45"},            
+                                                {   "key": "3", "start": "11:40",   "end": "14:20"},            
+                                                {   "key": "4", "start": "14:00",   "end": "17:30"},            
+                                                {   "key": "5", "start": "17:30",   "end": "18:30"},            
+                                                {   "key": "6", "start": "19:00"} 
+                                            ],  
+                "teams" : [
+                                { "no"      :   1,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   2,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   3,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   4,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   5,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   6,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   7,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   8,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   9,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  10,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  11,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  12,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  13,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  14,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  15,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  16,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  17,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  18,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  19,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  20,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  21,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  22,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  23,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  24,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  25,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  26,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  27,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  28,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  29,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  30,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  31,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  32,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  33,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  34,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  35,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  36,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  37,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  38,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  39,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      : 40,   "name" : "Zuschauerboot",                                           "cat" : [ ],                    "pay" : "" }
+				],
+                "foreruns": [
+					[
+					],[
+						]
+					],
+                "finalruns": [
+				]
+            },
+
+            "1"     : {
+                "event--name"               : "Cottbuser SchülerCup - Grundschulen",
+                "event-date"                : "20YY-06-25",
+                "timezone"                  : "GMT+0200",
+                "categories"                : {
+                    "boat"                  : [ "10´er", "20´er" ],
+                    "league"                : [ "Grundschule", "", "" ],
+                    "holded-competition"    : [ "12" ]
+                },
+                "paramz"            : {
+                    "time-cost-change"              : "10:00",
+                    "time-cost-without-change"      : "15:00",
+                    "min-per-cat"                   : 4,
+                    "n_forerun"                     : 2,
+                    "merged-cat-order"              : [ "f", "f0", "0"],
+					"n_boats"                       : [ 2, 4 ]
+                },
+                "comment00"                 : "Der key entspricht dem Postfix der Timetable-String",
+                "timetable"                 : [ { "key" : "1", "start" : "08:15",  "end" : "08:45" }, { "key" : "2", "start" : "09:00",  "end" : "10:00" },
+                                                { "key" : "3", "start" : "10:00",  "end" : "11:00" }, { "key" : "4", "start" : "11:00",  "end" : "12:00" },
+                                                { "key" : "5", "start" : "12:00",  "end" : "12:30" } ],
+
+                "teams" : [
+                                { "no"      :   1,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   2,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   3,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   4,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   5,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   6,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   7,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   8,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   9,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  10,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  11,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  12,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  13,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  14,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  15,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  }
+                ],          
+				"foreruns": [
+					[
+					],[
+					]
+				],	
+                "finalruns": [
+				]
+            },
+
+            "2"     : {
+                "event--name"               : "Cottbuser SchülerCup - Oberstufe",
+                "event-date"                : "20YY-06-25",
+                "timezone"                  : "GMT+0200",
+                "categories"                : {
+                    "boat"                  : [ "10´er", "20´er" ],
+                    "league"                : [ "", "Sek I", "Sek II" ],
+                    "holded-competition"    : [ "22", "42" ]
+                },
+                "paramz"            : {
+                    "time-cost-change"              : "10:00",
+                    "time-cost-without-change"      : "15:00",
+                    "min-per-cat"                   : 4,
+                    "merged-cat-order"              : [ "f", "f0", "0"],
+					"n_boats"               		: [ 2, 4 ],
+					"forerun_adjust"                : "fra_other_cat"
+                },
+                "comment00"                 : "Der key entspricht dem Postfix der Timetable-String",
+                "timetable"                 : [ { "key" : "1", "start" : "12:30",  "end" : "12:45" }, { "key" : "2", "start" : "13:00",  "end" : "14:00" },
+                                                { "key" : "3", "start" : "14:00",  "end" : "14:45" }, { "key" : "4", "start" : "15:00",  "end" : "15:45" },
+                                                { "key" : "5", "start" : "16:00",  "end" : "16:30" } ],
+
+                "comment-teams-001"             : "Sowohl Excel, als auch Browser-App können mit 22 und 42 für ein Team umgehen. Da manche Schulen jedoch drei und mehr Teams stellen",
+                "comment-teams-001"             : "und die Weitergabe der Startnummer sowieso nicht funktionieren würde, verzichten wir darauf",
+                "teams" : [
+                                { "no"      :   1,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   2,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   3,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   4,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   5,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   6,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   7,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   8,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   9,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  10,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  11,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  12,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  13,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  14,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  15,   "name" : "", 	"company" : "",	"cat" : [],         "pay" : "", "aliases" : {}  }
+                ],                      
+                "foreruns": [
+					[
+					],[
+					]
+				],
+                "finalruns": [
+				]
+            },
+            
+            "3"     : {
+                "event--name"               : "XIX. Cottbuser Nightrace",
+                "event-date"                : "20YY-06-26",
+                "comment-event-hidden-01"   : "Auf true, wenn das Event serverseitig wegen der Teamnamen/Daten enthalten ist, aber clientseitig nicht in der Selectbox erscheinen soll",
+                "event-hidden"              : false,
+                "timezone"                  : "GMT+0200",
+                "categories"                : {
+                    "boat"                  : [ "10´er", "20´er" ],
+                    "league"                : [ "Gruppe1", "Gruppe2", "Gruppe3", "Gruppe4" ],
+                    "holded-competition"    : [ "11", "21", "41", "81" ]
+                },
+                "paramz"            : {
+                    "time-cost-change"              : "08:00",
+                    "time-cost-without-change"      : "10:00",
+                    "min-per-cat"                   : 2,
+                    "merged-cat-order"              : [ "f", "f0", "0", "ff" ],
+                    "double-race-order"             : "drive_wait_full",
+					"competition-kind"				: "eck_play_off",
+					"limit_narrow_start"			: 3,
+					"ckpo_status_start_fr"			: "eckpos_qf"
+                },
+                "comment00"                 : "Der key entspricht dem Postfix der Timetable-String",
+                "timetable"                 : [ { "key" : "1", "start" : "19:00",  "end" : "19:15" }, { "key" : "2", "start" : "20:00",  "end" : "22:30", "skey" : 20 },
+                                                { "key" : "4", "start" : "22:30",  "end" : "23:50" }, { "key" : "5", "start" : "00:00",  "end" : "00:30" } ],
+                "teams" : [
+                                { "no"      :   1,   "name" : "", 	"company" : "",	"cat" : [ "11" ],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   2,   "name" : "", 	"company" : "",	"cat" : [ "11" ],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   3,   "name" : "", 	"company" : "",	"cat" : [ "11" ],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   4,   "name" : "", 	"company" : "",	"cat" : [ "11" ],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   5,   "name" : "", 	"company" : "",	"cat" : [ "11" ],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   6,   "name" : "", 	"company" : "",	"cat" : [ "11" ],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   7,   "name" : "", 	"company" : "",	"cat" : [ "11" ],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   8,   "name" : "", 	"company" : "",	"cat" : [ "11" ],         "pay" : "", "aliases" : {}  },
+                                { "no"      :   9,   "name" : "", 	"company" : "",	"cat" : [ "11" ],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  10,   "name" : "", 	"company" : "",	"cat" : [ "11" ],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  11,   "name" : "", 	"company" : "",	"cat" : [ "11" ],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  12,   "name" : "", 	"company" : "",	"cat" : [ "11" ],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  13,   "name" : "", 	"company" : "",	"cat" : [ "11" ],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  14,   "name" : "", 	"company" : "",	"cat" : [ "11" ],         "pay" : "", "aliases" : {}  },
+                                { "no"      :  15,   "name" : "", 	"company" : "",	"cat" : [ "11" ],         "pay" : "", "aliases" : {}  }
+                ],
+                "foreruns": [],
+                "finalruns": []
+            }
+        }
+    }
+}

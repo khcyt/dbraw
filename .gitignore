@@ -8,6 +8,7 @@
 .vscode/*
 /bas/*
 /data/*
+!/data/templ_new_year.json
 /dist/
 /doc/*.docx
 /doc/*.jpg
